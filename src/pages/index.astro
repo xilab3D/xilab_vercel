@@ -13,7 +13,7 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'XiLAB',
   ignoreTitleTemplate: true,
 };
 ---
@@ -25,28 +25,24 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
+        text: 'Présentation',
         href: 'https://github.com/onwidget/astrowind',
         target: '_blank',
         icon: 'tabler:download',
       },
-      { text: 'Learn more', href: '#features' },
+      { text: 'En savoir plus', href: '#features' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+    image={{ src: '~/assets/images/Optimisation-topo-PA12.svg', alt: 'Optimisation topologique appliquée à l\'impression 3D' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 4.0</span> + Tailwind CSS
+      XiLAB.tech <span class="hidden xl:inline"> : l'ingénierie agile</span>
+      <span class="text-accent dark:text-white highlight"> Ingénierie 4.0</span>
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 4.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
+        Bureau d'études en R&D spécialisé dans l'accompagnement de projets en ingénierie agile : du concept à l'objet, optimisation et allégement des formes, matériaux architecturés,  
+        résistance mécanique et études fluidiques, prédiction robuste grâce à l'IA, maintenance prédictive ... bref les moutons à 5 pattes ça nous connaît
     </Fragment>
   </Hero>
 
@@ -58,45 +54,33 @@ const metadata = {
 
   <Features
     id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022."
+    tagline="Compétences"
+    title="Nos 4 piliers" 
+    subtitle="Basés sur une expertise de plus de 20 ans dans l'accompagnement de PME"
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'Conception',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
+          'Conception de projets techniques, de la mise en oeuvre du cahier des charges à la fabrication des pièces',
+        icon: 'tabler:x1',
       },
       {
-        title: 'Ready-to-use Components',
+        title: 'Simulation',
         description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+          'Réalisation de calculs analytiques et numériques : élements et volumes finis, fluide, optimisation topologique, ...',
+        icon: 'tabler:x2',
       },
       {
-        title: 'Best Practices',
+        title: 'Modélisation de la connaissance',
         description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
+          'Modélisation de la connaissance et des données à des fins de réutilisations (processus, outils de CAO, ...)',
+        icon: 'tabler:x3',
       },
       {
-        title: 'Excellent Page Speed',
+        title: 'Intelligence Artificielle',
         description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
+          'Intégration de l\'IA dans les PME, mise en oeuvre de projets d\'IA (notamment parcimonieuse), matériaux architecturés',
+        icon: 'tabler:x4',
       },
     ]}
   />
@@ -105,23 +89,23 @@ const metadata = {
 
   <Content
     isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
+    tagline="Innovation et R&D"
+    title="La R&D : colonne vértebrale de XiLAB"
     items={[
       {
-        title: 'Built on top of Astro 4.0',
+        title: 'Veille scientifique et technologique',
         description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+          'Lors de la mise en place d\'un projet innovant, la phase de comparaison avec l\'existant, qu\'il soit académique ou industriel, est essentielle',
       },
       {
-        title: 'Styled using Tailwind CSS',
+        title: 'Audit',
         description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+          'Un audit peut permettre d\'avoir un point de vue extérieur sur les processus utilisés par l\'entreprise et la capitalisation de la connaissance',
       },
       {
-        title: 'Cross-browser compatibility',
+        title: 'Choix des méthodologies et des logiciels',
         description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+          'La mise en place d\'une méthodologie est essentielle pour un projet en ingénierie ainsi que le choix des logiciels (commercial et/ou open-source)',
       },
     ]}
     image={{
@@ -130,8 +114,8 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">La R&D au service de l'industrie</h3>
+      L'innovation et la rupture technilogique (comme la low tech) doit s'appuyer sur une base R&D solide
     </Fragment>
 
     <Fragment slot="bg">
@@ -139,111 +123,39 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
 
   <!-- Steps Widget ****************** -->
 
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+    title="Les 4 étapes sur lesquelles nous pouvons vous accompagner"
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
+        title: 'Etape 1 : <span class="font-medium">Design-Avant projet</span>',
         description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
+          "Analyse fonctionnelle, recherche de formes/concepts, exploration de solutions grâce à l\'IA, prédimensionnement, étude de faisabilité, rédaction cahier des charges",
         icon: 'tabler:letter-case',
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        title: 'Etape 2 : <span class="font-medium">Ingénierie</span>',
         description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
+          "Conception produits, modélisation 3D, simulation, optimisation, analyse robustesse, développement logiciels",
+        icon: 'tabler:package',
       },
       {
-        title: 'Ready!',
-        icon: 'tabler:check',
+        title: 'Etape 3 : <span class="font-medium">Prototypage</span>',
+        description:
+          'Scan 3D, rétroconception, protypage (polymères : impression 3D, CN (métal/bois)), maquettes de présentation',
+        icon: 'tabler:brand-codesandbox',
+      },
+      {
+        title: 'Etape 4 : <span class="font-medium">Industrialisation</span>',
+        description:
+          'SNotes de calcul, mise en plan, recherche fournisseurs, chiffrage, maintenance prédicitve (IA)',
+        icon: 'tabler:building-factory-2',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      src: '~/assets/images/proc.png',
       alt: 'Steps image',
     }}
   />
@@ -251,59 +163,59 @@ const metadata = {
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
+    title="Quelques exemples d'accompagnements"
+    subtitle="Vous trouverez dans ces fiches des exemples types d'accompagnements possibles"
+    tagline="Typologie d'accompagnement"
     items={[
       {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
+        title: 'Projet de R&D',
+        description: "Projets avec un niveau TRL 0 à 3, recherche de solutions à haute valeur ajoutée (simulation complexe, matériau architecturé, ...)",
+        icon: 'tabler:variable-plus',
       },
       {
-        title: 'Heros',
+        title: 'Projet innovant',
         description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
+          "Développement d'un nouveau concept : de la CAO au prototypage. Propositions de solutions (low tech, éco-conception, ...)",
+        icon: 'tabler:rocket',
       },
       {
-        title: 'Features',
+        title: 'Scan 3D',
         description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
+          'Besoin de retro-engineering : utilisation de nos 2 scanners grande taille et petite taille. Applications industrielles et sauvegarde du patrimoine',
+        icon: 'tabler:grid-scan',
       },
       {
-        title: 'Content',
+        title: 'Fabrication Additive',
         description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
+          "Utilisation de notre atelier FA : procédés SLS, SLA et FDM. Du prototypage à la petite série. Comapraison procédés classiques (CN)",
+        icon: 'tabler:brand-codesandbox',
       },
       {
-        title: 'Call-to-Action',
+        title: 'Audit',
         description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
+          'Réalisation d\'audits en ingénierie numérique pour réaliser une évaluation des processus établis/modélisation de la connaissance : propositions, critiques, ...',
+        icon: 'tabler:calendar-user',
       },
       {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
+        title: 'Simulation numérique',
+        description: 'Tenue mécanique linéaire et non linéaire, CFD, ... Utilisation d\'outils commerciaux et open-source',
+        icon: 'tabler:calculator',
       },
       {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
+        title: 'Conception générative',
+        description: 'Proposition de formes innovantes (matériaux architecturés, optimisation topologique) et d\'un ensemble de solutions grâce à la conception générative',
+        icon: 'tabler:rotate-3d',
       },
       {
-        title: 'Contact',
+        title: 'Préparation modèles pour la FA',
         description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
+          'Utilisation d\'un outil innovant (4D-Additive) pour préparer les modèles CAO à la FA (gestion supports, lattices, positionnement zone fabrication, ...)',
+        icon: 'tabler:layers-selected',
       },
       {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
+        title: 'Intelligence Artificielle',
+        description: "Utilisation de l\'IA parcimonieuse (avec l\'outil NeurEco) pour réaliser analyse de robustesse, analyse prédictive, systèmes embarqués, ... ",
+        icon: 'tabler:ai',
       },
     ]}
   >
@@ -315,64 +227,13 @@ const metadata = {
   <!-- HighlightedPosts Widget ******* -->
 
   <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
+    title="Trouver des exemples intéressants sur notre Blog"
+    information={`Notre Blog regroupe des articles présentant des cas réalisés, de la veille technologique et scientifique. Nous n'hésiterons pas à montrer nos échecs, qui peuvent servir à avancer.
+  `}
   />
 
-  <!-- FAQs Widget ******************* -->
+  
 
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
-      },
-      {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
-      },
-      {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
-      },
-    ]}
-  />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
-  />
 
   <!-- CallToAction Widget *********** -->
 
@@ -380,20 +241,19 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
+        text: 'Contactez nous',
+        href: '/contact',
         target: '_blank',
         icon: 'tabler:download',
       },
     ]}
   >
     <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      <span class="sm:whitespace-nowrap">Vous êtes intéréssés ?</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+      N'hésitez pas à cliquer
     </Fragment>
   </CallToAction>
 </Layout>
