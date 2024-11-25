@@ -110,11 +110,10 @@ export const footerData = {
     {
       title: 'Société',
       links: [
-        { text: 'A propos', href: '#' },
-        { text: 'Blog', href: '#' },
+        { text: 'A propos', href: getPermalink('/startup'), },
         { text: 'Carrière', href: '#' },
         { text: 'Presse', href: '#' },
-        { text: 'Contact', href: '#' },
+        { text: 'Contact', href: getPermalink('/contact'),' },
       ],
     },
   ],
