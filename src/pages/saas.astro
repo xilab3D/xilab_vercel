@@ -1,0 +1,286 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+import { headerData } from '~/navigation';
+import FAQs from '~/components/widgets/FAQs.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+
+const metadata = {
+  title: 'SaaS Landing Page',
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero2
+    tagline="Compétences"
+    actions={[
+      { variant: 'primary', target: '_blank', text: 'Services', href: '/services' },
+      { text: 'Projets R&D', href: '/projet' },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1580481072645-022f9a6dbf27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'AstroWind Hero Image',
+    }}
+  >
+    <Fragment slot="title">
+      Compétences transversales en ingénierie numérique
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        Nos compétences nous permettent de traiter des problématiques de la chaîne numérique dans sa globalités : 
+        <span class="font-semibold">CAO, Simulation Numérique, scanner 3D, fabrication additive, ....</span></span
+      >
+      Nous traitons principalement les projets innovants en avance de phase nécessitant d'utiliser des technologies et méthodologies de rupture.
+    </Fragment>
+  </Hero2>
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="features"
+    title="Compétences de XiLAB.tech"
+    subtitle="Compétences générales proposées par notre équipe"
+    columns={2}
+    items={[
+      {
+        title: 'Projet de R&D',
+        description: "Projets avec un niveau TRL 0 à 3, recherche de solutions à haute valeur ajoutée (simulation complexe, matériau architecturé, ...)",
+        icon: 'tabler:variable-plus',
+      },
+      {
+        title: 'Projet innovant',
+        description:
+          "Développement d'un nouveau concept : de la CAO au prototypage. Propositions de solutions (low tech, éco-conception, ...)",
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Scan 3D',
+        description:
+          'Besoin de retro-engineering : utilisation de nos 2 scanners grande taille et petite taille. Applications industrielles et sauvegarde du patrimoine',
+        icon: 'tabler:grid-scan',
+      },
+      {
+        title: 'Fabrication Additive',
+        description:
+          "Utilisation de notre atelier FA : procédés SLS, SLA et FDM. Du prototypage à la petite série. Comapraison procédés classiques (CN)",
+        icon: 'tabler:brand-codesandbox',
+      },
+      {
+        title: 'Audit',
+        description:
+          'Réalisation d\'audits en ingénierie numérique pour réaliser une évaluation des processus établis/modélisation de la connaissance : propositions, critiques, ...',
+        icon: 'tabler:calendar-user',
+      },
+      {
+        title: 'Simulation numérique',
+        description: 'Tenue mécanique linéaire et non linéaire, CFD, ... Utilisation d\'outils commerciaux et open-source',
+        icon: 'tabler:calculator',
+      },
+      {
+        title: 'Conception générative',
+        description: 'Proposition de formes innovantes (matériaux architecturés, optimisation topologique) et d\'un ensemble de solutions grâce à la conception générative',
+        icon: 'tabler:rotate-3d',
+      },
+      {
+        title: 'Préparation modèles pour la FA',
+        description:
+          'Utilisation d\'un outil innovant (4D-Additive) pour préparer les modèles CAO à la FA (gestion supports, lattices, positionnement zone fabrication, ...)',
+        icon: 'tabler:layers-selected',
+      },
+      {
+        title: 'Intelligence Artificielle',
+        description: "Utilisation de l\'IA parcimonieuse (avec l\'outil NeurEco) pour réaliser analyse de robustesse, analyse prédictive, systèmes embarqués, ... ",
+        icon: 'tabler:ai',
+      },
+      {
+        title: 'Formations',
+        description: "Formation en CAO, éléments finis, fabrication additive. Voir le détail dans la rubrique formations ",
+        icon: 'tabler:certificate',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    title="Exemples de cas traités"
+    subtitle="Au fur et à mesure vous trouverez le détail des cas traités par notre équipe dans notre blog"
+    isReversed
+    items={[
+      {
+        title: 'Description :',
+        description:
+          'Objectif : Anticiper le comportement de la nouvelle direction l\'enjambeur avant fabrication / Modélisation 3D et Simulation cinématique et mécanique et simulation statique non linéaire',
+      },
+      {
+        title: 'Résultats :',
+        description: `Corrélation des problèmes rencontrés avec la 1ère version de la direction / 
+Validation du dimensionnement des vérins /
+Localisation des zones à risques (information utile pour la fabrication lors de la réalisation des soudures notamment) /
+Conseil de modification à apporter sur le design et sur le choix des matériaux /
+Détermination du cisaillement max dans les vis`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/tracteur.png',
+      alt: 'Startup Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Exemple conception<br /><span class="text-2xl">Etude du comportement mécanique d'un engin viticole électrique</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description :',
+        description: `Dimensionner deux pièces (butée et isolement) utilisées dans un système de fixation du rail avec une lame SKL /
+Réduire la masse des pièces (gain matière et respect des règles métiers en plasturgie) sans dépasser la limite critique des contraintes mécaniques
+`,
+      },
+      {
+        title: 'Résultats :',
+        description: `Calcul non linéaire (aide à la modélisation des zones fonctionnelles) /
+Optimisation topologique (gain matière 20%) /
+Modélisation CAO des formes proposées /
+Calcul non linéaire (validation des formes proposées) /
+Impression 3D prototypes
+
+`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/rail.png',
+      alt: 'SaaS Businesses Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Domaine ferroviaire<br /><span class="text-2xl">Optimisation d’un système de fixation de rail </span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description :',
+        description: `Modéliser la cuve (capitalisation connaissance) / Simuler la tenue mécanique d’un moule d’une double cuve à béton (3m50 de largeur, 5m40 de longueur et 2m75 de haut)
+`,
+      },
+      {
+        title: 'Résultats :',
+        description: `Simulation statique non linéaire /
+        Validation du comportement (déformée maximale) /
+Détermination des zones à risque /
+Identification de la meilleure configuration (4 ou 5 renforts) /
+Livraison des plans de fabrication
+`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/beton.png',
+      alt: 'Portfolio Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Domaine BTP <br /><span class="text-2xl">Modélisation / simulation d'une cuve à béton</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    items={[
+      {
+        title: 'Description :',
+        description: `Modélisation 3D d'un G1 et vérification tenue mécnaique pour l'intégration d'une pile à combustible`,
+      },
+      {
+        title: 'Résultats :',
+        description: `Scan 3D de l'ensemble de l'avion / Modélisation de l'assemblge / Prédimensionnement comparatif sans / avec pilte à combustible selon normes en vigueur / Calcul crash cabine sans / avec pilte à combustible selon normes en vigueur`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/bya.png',
+      alt: 'Small Business Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Domaine aéronautique <br /><span class="text-2xl">Modélisation / simulation G1 pour intégration pile à combustible H2</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  
+
+  <!-- Steps2 Widget ****************** -->
+
+  <Steps2
+    title="Contactez nous"
+    subtitle="Vous avez des questions ? N'hésitez pas à nous contacter"
+    callToAction={{
+      text: 'Formulaire',
+      href: 'https://docs.google.com/forms/d/e/1FAIpQLSeMa6s3siWycdZ1jJkDTKTnlVYzqsMcDOKUXNrXZ90r6dRpTQ/formResponse',
+    }}
+    items={[
+      {
+        title: 'Email',
+        description: 'ngardan[AT]xilab[DOT]tech',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'Téléphone',
+        description: '06 73 28 43 14',
+        icon: 'tabler:headset',
+      },
+      {
+        title: 'Nous suivre',
+        description: '<a href="https://www.linkedin.com/in/nicolas-gardan-19ba526/"> Cliquez ici </a>',
+        icon: 'tabler:brand-linkedin',
+      },
+    ]}
+  />
+
+
+</Layout>

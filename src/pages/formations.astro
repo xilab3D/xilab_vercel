@@ -1,0 +1,125 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Services',
+};
+---
+
+<Layout metadata={metadata}>
+
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Formation et transfert"
+    subtitle="Sur la base de nombreux cas pratiques et de notre expérience de formateur industriel et universitaire, nous vous accompagnons sur l'intégration de certaines briques de la chaîne numérique. 2 types de formations sont proposées : les formations généralistes et les formations sur les logiciels partenaires"
+    columns={2}
+    items={[
+      {
+        title: 'Formations générales',
+        description:
+          'Formation sur des concepts théoriques de base en simulation (maillage, bien concevoir pour bien simuler, …), IA pour l’ingénieur, …',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Formations appliquées',
+        description:
+          'Formation sur les outils partenaires : HyperMesh/Optistruct, NeurEco, 4D-Additive, Rhino3D ou sur les outils libres : Salome-Meca et OpenFoam',
+        icon: 'tabler:arrow-big-up-line',
+      },
+    ]}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Explorer nos différentes formations"
+    subtitle="Le contenu et les prix des formations sont fournis sur demande"
+    columns={3}
+    items={[
+      {
+        title: 'Inititation au calcul par Elements Finis',
+        description:
+          'Notions de RDM, théorie des éléments finis, maillage, techniques de modélisation, mise en données et analyse des résultats',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Prédimensionnement',
+        description:
+          'Méthodologie pour la mise en place d\'calcul de prédimensionnement : bien concevoir pour bien mailler, gestion des conditions limites/chargements, matériaux/propriétés, analyse des résultats',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Intelligence Artificielle pour l\'ingénieur : notions de bases',
+        description: `Définitions générales, positionnement dans la chaîne numérique, notion d'IA parcimonieuse, applications dans le domaine de l'ingénierie`,
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Hypermesh/Optistruct/Inspire',
+        description:
+          'Définitions par l\'exemple, préparation des modèles, maillage, mise en données, préparation du solveur, analyse des résultats : tenue mécanique, optimisation géométrique/topologique',
+        icon: 'tabler:arrow-big-up-lines',
+      },
+      {
+        title: 'Transfert de technologie : NeurEco',
+        description:
+          'Notions de base (IA parcimonieuse), préparation des données d\'entraînements et de tests, mise en place et analyse de problèmes statiques (régression, compression, classification) et dynamiques, cas concrets',
+        icon: 'tabler:arrow-big-up-lines',
+      },
+      {
+        title: 'Transfert de technologie : 4D-Additive',
+        description:
+          'Correction des modèles, gestion bibliothèque machines, gestion et création des supports en fonction procédé, méthodologie positionnement plateau, nesting, export vers technologies intégrées',
+        icon: 'tabler:arrow-big-up-lines',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    items={[
+      {
+        title: 'Formations contextuelles',
+        description:
+          'Une réunion de positionnement permet d\'adapter la formation à votre contexte et votre besoin',
+        icon: 'tabler:wand',
+      },
+      {
+        title: 'Approche inductive',
+        description:
+          'Nos formations sont basées sur une approche inductive (bonnes pratiques tirées de cas concrets). Les notions théoriques (indispensables) sont expliquées au travers de cas concrets.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Documentation de qualité',
+        description:
+          'La documentation fournie est basée sur une approche pédagogique épprouvée',
+        icon: 'tabler:presentation',
+      },
+      {
+        title: 'Présentiel et/ou virtuel',
+        description:
+          'Les formations peuvent être réalisées sur site client et/ou en virtuel',
+        icon: 'tabler:carousel-horizontal',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/opti-f.png',
+      alt: 'Features Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Notre démarche</h3>
+    </Fragment>
+  </Content>
+
+ 
+</Layout>

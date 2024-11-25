@@ -1,0 +1,177 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Prices from '~/components/widgets/Pricing.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Pricing',
+};
+---
+
+<Layout metadata={metadata}>
+
+
+  <!-- Pricing Widget ******************* -->
+
+  <Prices
+    title="Exemples de prix"
+    subtitle="Comme on aime bien la transparence quelques exemples de coûts, adaptables suivant le contexte"
+    prices={[
+      {
+        title: 'Technicien',
+        subtitle: 'Scan 3D, Impression 3D',
+        price: 70,
+        period: 'par heure',
+        items: [
+          {
+            description: 'Utilisation scan 3D, hors déplacement',
+          },
+          {
+            description: 'Utilisation des machines d\'impression 3D',
+          },
+          {
+            description: 'Utilisation de la CN',
+          },
+          {
+            description: 'Post-traitement',
+          },
+        ],
+      },
+      {
+        title: 'Ingénieur',
+        subtitle: 'Conception, Pré-dimensionnement',
+        price: 107,
+        period: 'Par heure',
+        items: [
+          {
+            description: 'Conception de produits, mise en place',
+          },
+          {
+            description: 'Prédimensionnement en simulation numérique',
+          },
+          {
+            description: 'Préparation de modèles pour la fabrication',
+          },
+          {
+            description: 'Proposition de solutions innovantes',
+          },
+          {
+            description: 'Optimisation topologique / lattices',
+          },
+        ],
+        hasRibbon: true,
+        ribbonTitle: 'populaire',
+      },
+      {
+        title: 'Ingénieur expert',
+        subtitle: 'Simulation avancée, IA',
+        price: 150,
+        period: 'Par heure',
+        items: [
+          {
+            description: 'Veille R&D / Audits',
+          },
+          {
+            description: 'Gestion et modélisation de la connaissance',
+          },
+          {
+            description: 'Caluls prédictifs / maintenance prédictive grâce à l\'IA',
+          },
+          {
+            description: 'Simulation numérique avancée',
+          },
+          {
+            description: 'Développement python pour l\'ingénierie',
+          },
+        ],
+      },
+    ]}
+  />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="Price-related features"
+    subtitle="Discover the advantages of choosing our plans"
+    columns={2}
+    items={[
+      {
+        title: 'Tiered Pricing Plans',
+        description: 'Choose from a range of pricing plans designed to accommodate different budgets and requirements.',
+        icon: 'tabler:stairs',
+      },
+      {
+        title: 'Transparent Pricing',
+        description: 'Clearly displayed pricing details for each plan, with no hidden costs or unexpected charges.',
+        icon: 'tabler:flip-vertical',
+      },
+      {
+        title: 'Secure Payment Methods',
+        description: 'Secure payment gateways to protect your financial information during transactions.',
+        icon: 'tabler:shield-lock',
+      },
+      {
+        title: 'Instant Access',
+        description: `Immediate access to your chosen plan's features and templates upon subscription.`,
+        icon: 'tabler:accessible',
+      },
+      {
+        title: 'Upgrade Value',
+        description: 'Upgrade to higher-tier plans to unlock more features and benefits for an enhanced experience.',
+        icon: 'tabler:chevrons-up',
+      },
+      {
+        title: '24H support',
+        description: 'Questions answered via live chat, email or phone, every calendar day.',
+        icon: 'tabler:headset',
+      },
+    ]}
+    classes={{ container: 'max-w-5xl' }}
+  />
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    title="A guided journey from plans to creativity"
+    tagline="simplified process"
+    isReversed={true}
+    items={[
+      {
+        title: 'Explore plans',
+        icon: 'tabler:number-1',
+      },
+      {
+        title: 'Select a plan',
+        icon: 'tabler:number-2',
+      },
+      {
+        title: 'Sign Up / Log In',
+        icon: 'tabler:number-3',
+      },
+      {
+        title: 'Review order',
+        icon: 'tabler:number-4',
+      },
+      {
+        title: 'Enter payment details',
+        icon: 'tabler:number-5',
+      },
+      {
+        title: 'Confirmation',
+        icon: 'tabler:number-6',
+      },
+      {
+        title: 'Download and start using the template(s)',
+        icon: 'tabler:number-7',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1536816579748-4ecb3f03d72a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      alt: 'Steps image',
+    }}
+  />
+</Layout>

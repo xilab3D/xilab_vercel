@@ -1,0 +1,137 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import Features2 from '~/components/widgets/Features2.astro';
+import Features from '~/components/widgets/Features.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Brands from '~/components/widgets/Brands.astro';
+
+import { YouTube } from 'astro-embed';
+
+const metadata = {
+  title: 'Présentation de la société',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="XiLAB.tech est une marque de la société XiLAB3D+"
+  >
+    <Fragment slot="title">
+      En savoir <span class="hidden sm:inline">plus</span> sur la <span class="hidden sm:inline">plus</span> société <span
+        class="text-accent dark:text-white highlight">XiLAB3D+
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      XiLAB3D+ est une SARL créée par 4 associés en 2024, ses compétences sont basées sur 20 ans d'accompagnement de PME dans les domaines de la CAO, la simulation numérique et la modélisation de la connaissance
+    </Fragment>
+
+    <Fragment slot="image">
+      <YouTube id="bwS6sQv0ve0" title="Astro just Launched.... Could it be the ultimate web framework?" />
+      <style is:inline>
+        lite-youtube {
+          margin: 0 auto;
+          max-width: 100%;
+        }
+      </style>
+    </Fragment>
+  </Hero>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="A propos de XiLAB3D+"
+    subtitle="Notre force réside notamment dans notre capacité à traiter des projets pilotes permettant de réaliser une veille technologie et scientifique (en s’appuyant éventuellement sur un audit), de choisir les meilleures technologies et outils d’ingénierie numérique pour répondre au problème, et de construire un modèle complet (en s’appuyant des méthodologies de modélisation de connaissances) transférables au travers de formations."
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    title="Notre passé est important"
+    subtitle="Jeune société mais avec une expérience d'accompagnement de PME basés sur une approche terrain au plus près des problématiques"
+    stats={[
+      { title: 'Visites de PME', amount: '> 800' },
+      { title: 'Projets industriels traités', amount: '480' },
+      { title: 'Personnes formés', amount: '300' },
+      { title: 'Projets R&D', amount: '12' },
+    ]}
+  />
+
+  <!-- Brands Widget ****************** -->
+
+  <Brands
+    title="Partenaires & Collaborations"
+    subtitle="Ils nous font confiance"
+    icons={[]}
+    images={[
+      {
+        src: '~/assets/images/BA_black_logo.png',
+        alt: 'Beyond Aero',
+      },
+      {
+        src: '~/assets/images/ephrem.png',
+        alt: 'EPHREM',
+      },
+      {
+        src: '~/assets/images/ce.png',
+        alt: 'Collaborative',
+      }
+    ]}
+  />
+  
+
+  <!-- Features3 Widget ************** -->
+
+<!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Contactez nous',
+        href: '/contact',
+        target: '_blank',
+        icon: 'tabler:download',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      <span class="sm:whitespace-nowrap">Vous êtes intéréssés ?</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      N'hésitez pas à cliquer
+    </Fragment>
+  </CallToAction>
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: 'Remplissez ce formulaire',
+        href: '#',
+        icon: 'tabler:download',
+      },
+    ]}
+  >
+    <Fragment slot="title">Vous souaitez intégrer notre équipe</Fragment>
+
+    <Fragment slot="subtitle">
+      Découvrez la possibilité de traiter des projets d'ingénierie variés et d'apprendre un métier passionnant (pas de postes ouverts actuellement)
+    </Fragment>
+  </CallToAction>
+</Layout>
