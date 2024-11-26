@@ -45,7 +45,7 @@ export const headerData = {
       links: [
         {
           text: 'Projet général',
-          href: getPermalink('projet'),
+          href: getPermalink('/projet'),
         },
         {
           text: 'Matériaux architecurés',
@@ -87,7 +87,7 @@ export const footerData = {
     {
       title: 'Produits',
       links: [
-        { text: 'A venir ...', href: '#' },
+        { text: 'A venir ...', href: '/soon' },
       ],
     },
     {
@@ -111,8 +111,8 @@ export const footerData = {
       title: 'Société',
       links: [
         { text: 'A propos', href: getPermalink('/startup'), },
-        { text: 'Carrière', href: '#' },
-        { text: 'Presse', href: '#' },
+        { text: 'Carrière', href: '/soon' },
+        { text: 'Presse', href: '/soon' },
         { text: 'Contact', href: getPermalink('/contact'), },
       ],
     },
