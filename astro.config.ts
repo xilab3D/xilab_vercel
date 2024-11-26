@@ -23,7 +23,7 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 
 export default defineConfig({
   output: 'static',
-
+  site: 'https://xilabvercel.vercel.app/',
   integrations: [
     tailwind({
       applyBaseStyles: false,
