@@ -113,7 +113,7 @@ export const footerData = {
         { text: 'A propos', href: getPermalink('/startup'), },
         { text: 'Carrière', href: '#' },
         { text: 'Presse', href: '#' },
-        { text: 'Contact', href: getPermalink('/contact'),' },
+        { text: 'Contact', href: getPermalink('/contact'), },
       ],
     },
   ],
