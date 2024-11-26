@@ -119,7 +119,6 @@ export const footerData = {
   ],
   secondaryLinks: [
     { text: 'Mentions légales', href: getPermalink('/terms') },
-    { text: 'RGPD', href: getPermalink('/privacy') },
   ],
   socialLinks: [
     { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/in/nicolas-gardan-19ba526/'},
