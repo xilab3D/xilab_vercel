@@ -4,34 +4,19 @@ import { SITE, METADATA, APP_BLOG } from 'astrowind:config';
 import { fetchPosts } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
 
-export const GET = async () => {
-  if (!APP_BLOG.isEnabled) {
-    return new Response(null, {
-      status: 404,
-      statusText: 'Not found',
-    });
-  }
-
-  const posts = await fetchPosts();
-
-  const rss = await getRssString({
-    title: `${SITE.name}’s Blog`,
-    description: METADATA?.description || '',
-    site: import.meta.env.SITE,
-
-    items: posts.map((post) => ({
-      link: getPermalink(post.permalink, 'post'),
-      title: post.title,
-      description: post.excerpt,
-      pubDate: post.publishDate,
-    })),
-
-    trailingSlash: SITE.trailingSlash,
+export function GET(context) {
+  return rss({
+    // `<title>` field in output xml
+    title: 'Buzz’s Blog',
+    // `<description>` field in output xml
+    description: 'A humble Astronaut’s guide to the stars',
+    // Pull in your project "site" from the endpoint context
+    // https://docs.astro.build/en/reference/api-reference/#contextsite
+    site: context.site,
+    // Array of `<item>`s in output xml
+    // See "Generating items" section for examples using content collections and glob imports
+    items: [],
+    // (optional) inject custom xml
+    customData: `<language>en-us</language>`,
   });
-
-  return new Response(rss, {
-    headers: {
-      'Content-Type': 'application/xml',
-    },
-  });
-};
+}
