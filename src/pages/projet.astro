@@ -1,39 +1,40 @@
 ---
-import Layout from '~/layouts/LandingLayout.astro';
+import Layout from '~/layouts/PageLayout.astro';
 
-import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Lead Generation Landing Page Demo',
+  title: 'Projet R&D général',
 };
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero2 Widget ******************* -->
 
-  <Hero
-    tagline="Lead Generation Landing Demo"
-    title="Effective Lead Generation Landing Page: Unlock the Secrets"
-    subtitle="Discover the secrets to creating a Landing Page that turns curious visitors into eager leads. (Your Hero should grab attention instantly. Use a powerful headline that speaks directly to your target audience.)"
+  <Hero2
+    tagline="Projet de R&D"
+    title="Signature des données pour la modélisation de la connaissance et les réseaux de neurones"
+    subtitle="Recherche expérimentale visant à proposer un procédé numérique innovant de langage technique permettant d’assister l’ingénieur dans la construction de sa maquette numérique dans le contexte de la modélisation de connaissance et du jumeau numérique. 
+Les incertitudes du modèle proposé sont analysées dans le cadre d’un prototype R&D permettant d’utiliser le langage technique dans un premier temps pour les jumeaux numériques connectés à une modélisation 3D (CAO et simulation numérique)."
     actions={[
       { variant: 'primary', text: 'Call to Action', href: '#', icon: 'tabler:square-rounded-arrow-right' },
       { text: 'Learn more', href: '#' },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1597423498219-04418210827d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80',
-      alt: 'Magnet attracting screws. Lead generation landing page demo',
+      src: '~/assets/gne.png',
+      alt: 'Store with a Coming Soon sign. Pre-launch Landing Page',
     }}
   />
 
   <CallToAction
-    title="Coming soon"
-    subtitle="We are working on the content of these demo pages. You will see them very soon. Stay tuned Stay tuned!"
+    title="Je prends contact"
+    subtitle="Ce projet m'intéresse j'aimerai en savoir plus"
     actions={[
       {
         variant: 'primary',
-        text: 'Download Template',
-        href: 'https://github.com/onwidget/astrowind',
+        text: 'Je prends contact',
+        href: '/contact',
         icon: 'tabler:download',
       },
     ]}
