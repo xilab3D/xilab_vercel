@@ -79,7 +79,7 @@ export const headerData = {
       href: '#',
     },
   ],
-  actions: [{ text: 'Plaquette', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  actions: [{ text: 'Plaquette', href: 'https://www.canva.com/design/DAGXqmC9hO8/7k2Yj7dHBtgW2TvpvXpAxw/view?utm_content=DAGXqmC9hO8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd6ca1a149a', target: '_blank' }],
 };
 
 export const footerData = {
