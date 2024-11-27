@@ -2,28 +2,258 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Projet R&D général',
+  title: 'XiLAB',
+  ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero2 Widget ******************* -->
+  <!-- Hero Widget ******************* -->
 
   <Hero
-    tagline="Projet de R&D"
-    title="Signature des données pour la modélisation de la connaissance et les réseaux de neurones"
-    subtitle="Recherche expérimentale visant à proposer un procédé numérique innovant de langage technique permettant d’assister l’ingénieur dans la construction de sa maquette numérique dans le contexte de la modélisation de connaissance et du jumeau numérique. 
-Les incertitudes du modèle proposé sont analysées dans le cadre d’un prototype R&D permettant d’utiliser le langage technique dans un premier temps pour les jumeaux numériques connectés à une modélisation 3D (CAO et simulation numérique)."
     actions={[
-      { variant: 'primary', text: 'Call to Action', href: '#', icon: 'tabler:square-rounded-arrow-right' },
-      { text: 'Learn more', href: '#' },
+      {
+        variant: 'primary',
+        text: 'Plaquette',
+        href: 'https://github.com/onwidget/astrowind',
+        target: '_blank',
+        icon: 'tabler:download',
+      },
+      { text: 'En savoir plus', href: '#features' },
+    ]}
+    image={{ src: '~/assets/images/Optimisation-topo-PA12.svg', alt: 'Optimisation topologique appliquée à l\'impression 3D' }}
+  >
+    <Fragment slot="title">
+      XiLAB.tech<span class="hidden xl:inline"> : l'ingénierie agile</span>
+      <span class="text-accent dark:text-white highlight"> Ingénierie 4.0</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        Bureau d'études en R&D spécialisé dans l'accompagnement de projets en ingénierie agile : du concept à l'objet, optimisation et allégement des formes, matériaux architecturés,  
+        résistance mécanique et études fluidiques, prédiction robuste grâce à l'IA, maintenance prédictive ... bref les moutons à 5 pattes ça nous connaît
+    </Fragment>
+  </Hero>
+
+  <!-- Note Widget ******************* -->
+
+  <Note />
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="features"
+    tagline="Compétences"
+    title="Nos 4 piliers" 
+    subtitle="Basés sur une expertise de plus de 20 ans dans l'accompagnement de PME"
+    items={[
+      {
+        title: 'Conception',
+        description:
+          'Conception de projets techniques, de la mise en oeuvre du cahier des charges à la fabrication des pièces',
+        icon: 'tabler:hexagonal-prism-plus',
+      },
+      {
+        title: 'Simulation',
+        description:
+          'Réalisation de calculs analytiques et numériques : élements et volumes finis, fluide, optimisation topologique, ...',
+        icon: 'tabler:variable',
+      },
+      {
+        title: 'Modélisation de la connaissance',
+        description:
+          'Modélisation de la connaissance et des données à des fins de réutilisations (processus, outils de CAO, ...)',
+        icon: 'tabler:message-cog',
+      },
+      {
+        title: 'Intelligence Artificielle',
+        description:
+          'Intégration de l\'IA dans les PME, mise en oeuvre de projets d\'IA (notamment parcimonieuse), matériaux architecturés',
+        icon: 'tabler:binary-tree',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    tagline="Innovation et R&D"
+    title="La R&D : colonne vértebrale de XiLAB"
+    items={[
+      {
+        title: 'Veille scientifique et technologique',
+        description:
+          'Lors de la mise en place d\'un projet innovant, la phase de comparaison avec l\'existant, qu\'il soit académique ou industriel, est essentielle',
+      },
+      {
+        title: 'Audit',
+        description:
+          'Un audit peut permettre d\'avoir un point de vue extérieur sur les processus utilisés par l\'entreprise et la capitalisation de la connaissance',
+      },
+      {
+        title: 'Choix des méthodologies et des logiciels',
+        description:
+          'La mise en place d\'une méthodologie est essentielle pour un projet en ingénierie ainsi que le choix des logiciels (commercial et/ou open-source)',
+      },
     ]}
     image={{
-      src: '~/assets/images/gne.png',
-      alt: 'Store with a Coming Soon sign. Pre-launch Landing Page'
+      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Colorful Image',
     }}
   >
-  </Hero>
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">La R&D au service de l'industrie</h3>
+      L'innovation et la rupture technilogique (comme la low tech) doit s'appuyer sur une base R&D solide
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    title="Les 4 étapes sur lesquelles nous pouvons vous accompagner"
+    items={[
+      {
+        title: 'Etape 1 : <span class="font-medium">Design-Avant projet</span>',
+        description:
+          "Analyse fonctionnelle, recherche de formes/concepts, exploration de solutions grâce à l\'IA, prédimensionnement, étude de faisabilité, rédaction cahier des charges",
+        icon: 'tabler:letter-case',
+      },
+      {
+        title: 'Etape 2 : <span class="font-medium">Ingénierie</span>',
+        description:
+          "Conception produits, modélisation 3D, simulation, optimisation, analyse robustesse, développement logiciels",
+        icon: 'tabler:package',
+      },
+      {
+        title: 'Etape 3 : <span class="font-medium">Prototypage</span>',
+        description:
+          'Scan 3D, rétroconception, protypage (polymères : impression 3D, CN (métal/bois)), maquettes de présentation',
+        icon: 'tabler:brand-codesandbox',
+      },
+      {
+        title: 'Etape 4 : <span class="font-medium">Industrialisation</span>',
+        description:
+          'SNotes de calcul, mise en plan, recherche fournisseurs, chiffrage, maintenance prédicitve (IA)',
+        icon: 'tabler:building-factory-2',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/proc.png',
+      alt: 'Steps image',
+    }}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Quelques exemples d'accompagnements"
+    subtitle="Vous trouverez dans ces fiches des exemples types d'accompagnements possibles"
+    tagline="Typologie d'accompagnement"
+    items={[
+      {
+        title: 'Projet de R&D',
+        description: "Projets avec un niveau TRL 0 à 3, recherche de solutions à haute valeur ajoutée (simulation complexe, matériau architecturé, ...)",
+        icon: 'tabler:variable-plus',
+      },
+      {
+        title: 'Projet innovant',
+        description:
+          "Développement d'un nouveau concept : de la CAO au prototypage. Propositions de solutions (low tech, éco-conception, ...)",
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Scan 3D',
+        description:
+          'Besoin de retro-engineering : utilisation de nos 2 scanners grande taille et petite taille. Applications industrielles et sauvegarde du patrimoine',
+        icon: 'tabler:grid-scan',
+      },
+      {
+        title: 'Fabrication Additive',
+        description:
+          "Utilisation de notre atelier FA : procédés SLS, SLA et FDM. Du prototypage à la petite série. Comapraison procédés classiques (CN)",
+        icon: 'tabler:brand-codesandbox',
+      },
+      {
+        title: 'Audit',
+        description:
+          'Réalisation d\'audits en ingénierie numérique pour réaliser une évaluation des processus établis/modélisation de la connaissance : propositions, critiques, ...',
+        icon: 'tabler:calendar-user',
+      },
+      {
+        title: 'Simulation numérique',
+        description: 'Tenue mécanique linéaire et non linéaire, CFD, ... Utilisation d\'outils commerciaux et open-source',
+        icon: 'tabler:calculator',
+      },
+      {
+        title: 'Conception générative',
+        description: 'Proposition de formes innovantes (matériaux architecturés, optimisation topologique) et d\'un ensemble de solutions grâce à la conception générative',
+        icon: 'tabler:rotate-3d',
+      },
+      {
+        title: 'Préparation modèles pour la FA',
+        description:
+          'Utilisation d\'un outil innovant (4D-Additive) pour préparer les modèles CAO à la FA (gestion supports, lattices, positionnement zone fabrication, ...)',
+        icon: 'tabler:layers-selected',
+      },
+      {
+        title: 'Intelligence Artificielle',
+        description: "Utilisation de l\'IA parcimonieuse (avec l\'outil NeurEco) pour réaliser analyse de robustesse, analyse prédictive, systèmes embarqués, ... ",
+        icon: 'tabler:ai',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- HighlightedPosts Widget ******* -->
+
+  <BlogLatestPosts
+    title="Trouver des exemples intéressants sur notre Blog"
+    information={`Notre Blog regroupe des articles présentant des cas réalisés, de la veille technologique et scientifique. Nous n'hésiterons pas à montrer nos échecs, qui peuvent servir à avancer.
+  `}
+  />
+
+  
+
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Contactez nous',
+        href: '/contact',
+        target: '_blank',
+        icon: 'tabler:download',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      <span class="sm:whitespace-nowrap">Vous êtes intéréssés ?</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      N'hésitez pas à cliquer
+    </Fragment>
+  </CallToAction>
 </Layout>
