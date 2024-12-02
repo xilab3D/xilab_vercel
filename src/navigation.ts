@@ -45,7 +45,7 @@ export const headerData = {
       links: [
         {
           text: 'Projet général',
-          href: getPermalink('/projet'),
+          href: getPermalink('/materiaux'),
         },
         {
           text: 'Matériaux architecurés',
