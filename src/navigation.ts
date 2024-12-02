@@ -79,7 +79,7 @@ export const headerData = {
       href: '#',
     },
   ],
-  actions: [{ text: 'Plaquette', href: 'https://urls.fr/zxqjA', target: '_blank' }],
+  actions: [{ text: 'Plaquette', href: 'https://www.canva.com/design/DAGXwBzCmnU/pozaX4U9f777Ei43dpr3Nw/view?utm_content=DAGXwBzCmnU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h9e41040fe1', target: '_blank' }],
 };
 
 export const footerData = {
