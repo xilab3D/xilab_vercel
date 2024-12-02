@@ -57,7 +57,7 @@ export const headerData = {
         },
         {
           text: 'Collaborations',
-          href: getPermalink('/collaborations'),
+          href: getPermalink('/soon'),
         },
       ],
     },
@@ -76,7 +76,7 @@ export const headerData = {
     },
     {
       text: 'Produits',
-      href: '#',
+      href: '/soon',
     },
   ],
   actions: [{ text: 'Plaquette', href: 'https://www.canva.com/design/DAGXwBzCmnU/pozaX4U9f777Ei43dpr3Nw/view?utm_content=DAGXwBzCmnU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h9e41040fe1', target: '_blank' }],
@@ -93,18 +93,18 @@ export const footerData = {
     {
       title: 'Notre atelier',
       links: [
-        { text: 'Scanners disponibles', href: '#' },
-        { text: 'Fabrication Additive', href: '#' },
-        { text: 'Commande Numérique', href: '#' },
+        { text: 'Scanners disponibles', href: '/soon' },
+        { text: 'Fabrication Additive', href: '/soon' },
+        { text: 'Commande Numérique', href: '/soon' },
       ],
     },
     {
       title: 'Nos outils',
       links: [
-        { text: 'Fabrication Additive', href: '#' },
-        { text: 'IA parcimonieuse', href: '#' },
-        { text: 'CAO', href: '#' },
-        { text: 'Simulation Numérique', href: '#' },
+        { text: 'Fabrication Additive', href: '/soon' },
+        { text: 'IA parcimonieuse', href: '/soon' },
+        { text: 'CAO', href: '/soon' },
+        { text: 'Simulation Numérique', href: '/soon' },
       ],
     },
     {
