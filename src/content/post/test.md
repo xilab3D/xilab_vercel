@@ -39,8 +39,10 @@ Il existe globalement 2 façons d’intégrer l’optimisation topologique à la
 - toute la pièce peut être optimisée et les formes de départ sont très globales avec simplement les fonctions qui contraignent la pièce
 - la peau extérieure (ou une partie) de la pièce est fonctionnelle et ne peut pas être modifiée.
 
-Un problème d’optimisation topologique peut être défini comme la recherche de la meilleure distribution de matière dans un espace de conception donné (Calvel, 2004). Le domaine de référence $`\omega$ (\omega$ \in R^{3}) `$ est défini par un espace de conception, des conditions limites et des chargements. L’objectif est ainsi de trouver la meilleure distribution de matière (déterminer le sous domaine ω de Ω rempli avec de la matière). On cherche ainsi à minimiser une fonction objectif f sous contraintes afin de déterminer χ (voir équation 1) : 
-min┬(ω∁Ω)⁡〖f(ω):[C]→ω∈χ〗	(1)
+Un problème d’optimisation topologique peut être défini comme la recherche de la meilleure distribution de matière dans un espace de conception donné (Calvel, 2004). Le domaine de référence $`\Omega (\Omega \in R^{3}) `$ est défini par un espace de conception, des conditions limites et des chargements. L’objectif est ainsi de trouver la meilleure distribution de matière (déterminer le sous domaine ω de Ω rempli avec de la matière). On cherche ainsi à minimiser une fonction objectif f sous contraintes afin de déterminer $`\chi `$ : 
+
+$`\min_{\omega \subset \Omega}:[C] \to \omega \in \chi `$
+
 En pratique la fonction objectif f peut être représentée par le poids, le volume, l’énergie de déformation ; les variables de conception par les dimensions, le type de matériau, … et les contraintes par le déplacement, la masse, la fréquence, … 
 
 ## Références
