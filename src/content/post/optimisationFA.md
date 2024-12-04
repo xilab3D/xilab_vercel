@@ -2,7 +2,7 @@
 publishDate: 2024-11-26T00:00:00Z
 title: Optimisation de formes et application en fabrication additive 
 excerpt: L'optimisation de formes de structures mécaniques est de nos jours incontournable dans l’industrie mécanique (automobile, aéronautique etc.). 
-image: https://drive.google.com/file/d/1FGkiDv97e-FdD5THga4U-_lMyI_usA0w/view?usp=sharing
+image: [https://drive.google.com/file/d/1FGkiDv97e-FdD5THga4U-_lMyI_usA0w/view?usp=sharing](https://drive.google.com/file/d/1FGkiDv97e-FdD5THga4U-_lMyI_usA0w/view)
 tags:
   - Optimisation topologique
   - Simulation numérique
