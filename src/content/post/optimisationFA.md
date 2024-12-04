@@ -47,3 +47,12 @@ En pratique la fonction objectif f peut être représentée par le poids, le vol
 
 ## Références
 
+(Abramovitch & al, 2010) H. Abramovitch et al., « Smart tetrachiral and hexachiral honeycomb: Sensing and impact detection », Compos. Sci. Technol., vol. 70, no 7, p. 1072‑1079, juill. 2010, doi: 10.1016/j.compscitech.2009.07.017.
+
+(Allaire, 2007) G. Allaire, Conception optimale de structures. New York: Springer, 2007.
+
+(Allaire & Jouve, 1999) G. Allaire et F. Jouve, « Structural Optimization by the Homogenization Method », in IUTAM Symposium on Variations of Domain and Free-Boundary Problems in Solid Mechanics, P. Argoul, M. Frémond, et Q. S. Nguyen, Éd. Springer Netherlands, 1999, p. 293‑300.
+
+(Calvel, 2004) S. Calvel, « Conception d’organes automobiles par optimisation topologique », Université Paul Sabatier - Toulouse III, 2004.
+
+(Galantucci & al, 2008) L. M. Galantucci, F. Lavecchia, et G. Percoco, « Study of compression properties of topologically optimized FDM made structured parts », CIRP Ann. - Manuf. Technol., vol. 57, no 1, p. 243‑246, 2008, doi: 10.1016/j.cirp.2008.03.009.
