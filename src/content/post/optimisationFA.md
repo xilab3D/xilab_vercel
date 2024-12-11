@@ -6,7 +6,23 @@ image: '~/assets/images/optitopo.jpg'
 tags:
   - Optimisation topologique
   - Simulation numérique
+layout: null
 ---
+
+<head>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
 
 L'optimisation de formes de structures mécaniques est de nos jours incontournable dans l’industrie mécanique (automobile, aéronautique etc.). Pour rester dans la compétition mondiale, les entreprises se doivent de concevoir des structures qui, en plus de respecter des performances mécaniques précises, doivent être moins coûteuses avec des délais de plus en plus courts. Les ingénieurs doivent alors réaliser des formes pour leurs structures qui soient un meilleur compromis entre les performances mécaniques et fonctionnelles, le poids, le coût de fabrication ... 
 
