@@ -65,16 +65,16 @@ export const headerData = {
     text: 'Logiciels',
       links: [
         {
-          text: 'Projet général',
-          href: getPermalink('/'),
+          text: 'Vision globale',
+          href: getPermalink('/soon'),
         },
         {
           text: 'NeurEco',
-          href: getPermalink('/neureco'),
+          href: getPermalink('/soon'),
         },
         {
           text: 'Simerics',
-          href: getPermalink('/simerics'),
+          href: getPermalink('/soon'),
         },
       ],
     },
