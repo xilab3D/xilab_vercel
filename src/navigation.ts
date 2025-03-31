@@ -62,19 +62,6 @@ export const headerData = {
       ],
     },
     {
-      text: 'Blog',
-      links: [
-        {
-          text: 'Liste',
-          href: getBlogPermalink(),
-        },
-        {
-          text: 'Article',
-          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-        },
-      ],
-    },
-    {
     text: 'Logiciels',
       links: [
         {
@@ -88,6 +75,19 @@ export const headerData = {
         {
           text: 'Simerics',
           href: getPermalink('/simerics'),
+        },
+      ],
+    },
+    {
+      text: 'Blog',
+      links: [
+        {
+          text: 'Liste',
+          href: getBlogPermalink(),
+        },
+        {
+          text: 'Article',
+          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
         },
       ],
     },
