@@ -65,16 +65,12 @@ export const headerData = {
     text: 'Logiciels',
       links: [
         {
-          text: 'Vision globale',
-          href: getPermalink('/soon'),
-        },
-        {
           text: 'NeurEco',
-          href: getPermalink('/soon'),
+          href: getPermalink('/neureco'),
         },
         {
           text: 'Simerics',
-          href: getPermalink('/soon'),
+          href: getPermalink('/simerics'),
         },
       ],
     },
@@ -86,13 +82,13 @@ export const headerData = {
           href: getBlogPermalink(),
         },
         {
-          text: 'Article',
-          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
+          text: 'Focus article',
+          href: '/optimisationfa' ,
         },
       ],
     },
   ],
-  actions: [{ text: 'Plaquette', href: 'https://www.canva.com/design/DAGXwBzCmnU/pozaX4U9f777Ei43dpr3Nw/view?utm_content=DAGXwBzCmnU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h9e41040fe1', target: '_blank' }],
+  actions: [{ text: 'Plaquette', href: 'https://www.canva.com/design/DAGhr2chqNo/BLVH6Dr5YfNEosD3B3JugQ/view?utm_content=DAGhr2chqNo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0477d42f10', target: '_blank' }],
 };
 
 export const footerData = {
@@ -106,25 +102,21 @@ export const footerData = {
     {
       title: 'Notre atelier',
       links: [
-        { text: 'Scanners disponibles', href: '/soon' },
-        { text: 'Fabrication Additive', href: '/soon' },
-        { text: 'Commande Numérique', href: '/soon' },
+        { text: 'FabAlp3D', href: '/soon' }
       ],
     },
     {
       title: 'Nos outils',
       links: [
-        { text: 'Fabrication Additive', href: '/soon' },
-        { text: 'IA parcimonieuse', href: '/soon' },
-        { text: 'CAO', href: '/soon' },
-        { text: 'Simulation Numérique', href: '/soon' },
+        { text: 'IA parcimonieuse', href: '/neureco' },
+        { text: 'CFD', href: '/simerics' },
+        { text: 'Fabrication Additive', href: '/soon' }
       ],
     },
     {
       title: 'Société',
       links: [
         { text: 'A propos', href: getPermalink('/startup'), },
-        { text: 'Carrière', href: '/soon' },
         { text: 'Presse', href: '/soon' },
         { text: 'Contact', href: getPermalink('/contact'), },
       ],
