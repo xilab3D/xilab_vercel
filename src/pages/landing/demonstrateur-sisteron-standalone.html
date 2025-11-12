@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Prédictive - Gestion de l'Eau Sisteron</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const Droplets = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>;
+        const AlertTriangle = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>;
+        const Play = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>;
+        const Pause = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="4" height="16" x="6" y="4"/><rect width="4" height="16" x="14" y="4"/></svg>;
+        const RotateCcw = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>;
+        const Brain = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>;
+        const Clock = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>;
+        const Shield = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>;
+        const Timer = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg>;
+        const Activity = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>;
+
+        const DemonstrateurEauSisteronPredictif = () => {
+          const [isRunning, setIsRunning] = useState(true);
+          const [time, setTime] = useState(0);
+          const [scenario, setScenario] = useState('normal');
+          const [aiEnabled, setAiEnabled] = useState(true);
+          const [detectedLeak, setDetectedLeak] = useState(null);
+          const [alerts, setAlerts] = useState([]);
+          const [predictions, setPredictions] = useState([]);
+          
+          const getTimeInHours = () => time;
+          const formatTime = (hours) => {
+            if (hours < 0) return `Dans ${Math.abs(hours)}h`;
+            return `${hours}h`;
+          };
+          
+          const [sensors, setSensors] = useState([
+            { id: 1, name: 'Centre-Ville', zone: 'Secteur Citadelle', x: 45, y: 30, flow: 68, pressure: 3.4, status: 'ok', health: 100, anomalyScore: 0 },
+            { id: 2, name: 'La Baume', zone: 'Rive Durance', x: 60, y: 45, flow: 52, pressure: 3.2, status: 'ok', health: 100, anomalyScore: 0 },
+            { id: 3, name: 'Quartiers Nord', zone: 'Les Chaumianes', x: 35, y: 15, flow: 45, pressure: 3.5, status: 'ok', health: 100, anomalyScore: 0 },
+            { id: 4, name: 'Les Plantiers', zone: 'Route de Marseille', x: 75, y: 35, flow: 58, pressure: 3.3, status: 'ok', health: 100, anomalyScore: 0 },
+            { id: 5, name: 'Bourg Reynaud', zone: 'Centre ancien', x: 50, y: 55, flow: 42, pressure: 3.1, status: 'ok', health: 100, anomalyScore: 0 },
+            { id: 6, name: 'Le Thor', zone: 'Quartier Nord', x: 25, y: 25, flow: 38, pressure: 3.4, status: 'ok', health: 100, anomalyScore: 0 },
+            { id: 7, name: 'La Coste', zone: 'Quartier médiéval', x: 40, y: 70, flow: 35, pressure: 3.0, status: 'ok', health: 100, anomalyScore: 0 },
+          ]);
+
+          const [metrics, setMetrics] = useState({
+            totalFlow: 338,
+            waterLoss: 14,
+            energyCost: 2200,
+            leaksDetected: 0,
+            avgResponseTime: 0,
+            waterSaved: 0,
+            duranceFlow: 1850,
+            hoursBeforeFailure: null,
+            maintenanceCostAvoided: 0,
+            interventionType: null
+          });
+
+          const calculateAnomalyScore = (sensor, hours, scenario) => {
+            if (scenario === 'leak' && sensor.id === 2) {
+              if (hours < 20) return Math.random() * 5;
+              if (hours < 36) return 5 + ((hours - 20) / 16) * 15 + Math.random() * 3;
+              if (hours < 44) return 20 + ((hours - 36) / 8) * 25 + Math.random() * 3;
+              if (hours < 48) return 45 + ((hours - 44) / 4) * 30 + Math.random() * 3;
+              return 90 + Math.min(10, (hours - 48) * 2);
+            }
+            return Math.random() * 5;
+          };
+
+          const calculateHealthScore = (anomalyScore) => {
+            return Math.max(0, 100 - anomalyScore);
+          };
+
+          useEffect(() => {
+            if (!isRunning) return;
+
+            const interval = setInterval(() => {
+              setTime(t => t + 1);
+
+              setSensors(prevSensors => {
+                const newSensors = prevSensors.map(sensor => {
+                  const hours = time;
+                  let baseFlow = 52;
+                  let basePressure = 3.2;
+                  let newFlow = baseFlow + (Math.random() - 0.5) * 2;
+                  let newPressure = basePressure + (Math.random() - 0.5) * 0.03;
+                  let newStatus = 'ok';
+                  
+                  const anomalyScore = calculateAnomalyScore(sensor, hours, scenario);
+                  const health = calculateHealthScore(anomalyScore);
+
+                  if (scenario === 'leak' && sensor.id === 2) {
+                    if (hours < 20) {
+                      newFlow = baseFlow + Math.sin(hours * 0.3) * 1;
+                      newPressure = basePressure + Math.sin(hours * 0.2) * 0.02;
+                    }
+                    else if (hours < 36) {
+                      newFlow = baseFlow + (hours - 20) * 0.15 + Math.sin(hours * 0.5) * 2;
+                      newPressure = basePressure - (hours - 20) * 0.005;
+                      
+                      if (aiEnabled && hours === 30 && !predictions.find(p => p.type === 'monitoring')) {
+                        newStatus = 'monitoring';
+                        setPredictions(prev => [...prev, {
+                          sensor: sensor.id,
+                          time: hours,
+                          type: 'monitoring',
+                          message: `Surveillance renforcée : micro-variations`,
+                          severity: 'info',
+                          hoursBeforeFailure: 18
+                        }]);
+                        setAlerts(prev => [...prev, {
+                          time: hours,
+                          message: `🔍 IA - Surveillance (H-18) : Micro-variations détectées sur ${sensor.name}`,
+                          type: 'ai',
+                          severity: 'info'
+                        }]);
+                      }
+                    }
+                    else if (hours < 44) {
+                      newFlow = baseFlow + (hours - 20) * 0.4;
+                      newPressure = basePressure - (hours - 20) * 0.012;
+                      
+                      if (aiEnabled && hours === 38 && !predictions.find(p => p.type === 'warning')) {
+                        newStatus = 'warning';
+                        setPredictions(prev => [...prev, {
+                          sensor: sensor.id,
+                          time: hours,
+                          type: 'warning',
+                          message: `Anomalie confirmée : dégradation progressive`,
+                          severity: 'warning',
+                          hoursBeforeFailure: 10
+                        }]);
+                        setAlerts(prev => [...prev, {
+                          time: hours,
+                          message: `⚠️ IA - Alerte précoce (H-10) : Dégradation détectée sur ${sensor.name}`,
+                          type: 'ai',
+                          severity: 'warning'
+                        }]);
+                      }
+                    }
+                    else if (hours < 48) {
+                      newFlow = baseFlow + (hours - 20) * 0.8;
+                      newPressure = basePressure - (hours - 20) * 0.02;
+                      
+                      if (aiEnabled && hours === 45 && !predictions.find(p => p.type === 'critical')) {
+                        newStatus = 'critical';
+                        setPredictions(prev => [...prev, {
+                          sensor: sensor.id,
+                          time: hours,
+                          type: 'critical',
+                          message: `Intervention préventive recommandée`,
+                          severity: 'critical',
+                          hoursBeforeFailure: 3
+                        }]);
+                        setAlerts(prev => [...prev, {
+                          time: hours,
+                          message: `🚨 IA - Intervention préventive (H-3) : Panne imminente sur ${sensor.name}`,
+                          type: 'ai',
+                          severity: 'critical'
+                        }]);
+                        
+                        if (!detectedLeak) {
+                          setDetectedLeak({ 
+                            sensor: sensor.id, 
+                            time: hours, 
+                            type: 'preventive',
+                            timeBeforeFailure: 3 
+                          });
+                        }
+                      }
+                    }
+                    else {
+                      newFlow = baseFlow + (hours - 20) * 1.5 + (hours - 48) * 5;
+                      newPressure = Math.max(0.5, basePressure - (hours - 20) * 0.03);
+                      
+                      if (hours === 48 && !aiEnabled && !detectedLeak) {
+                        newStatus = 'alert';
+                        setDetectedLeak({ 
+                          sensor: sensor.id, 
+                          time: hours, 
+                          type: 'reactive',
+                          timeBeforeFailure: 0
+                        });
+                        setAlerts(prev => [...prev, {
+                          time: hours,
+                          message: `❌ Alerte seuil (H+0) : RUPTURE détectée sur ${sensor.name}`,
+                          type: 'threshold',
+                          severity: 'alert'
+                        }]);
+                      }
+                    }
+                  }
+
+                  return {
+                    ...sensor,
+                    flow: Math.max(0, newFlow),
+                    pressure: Math.max(0, newPressure),
+                    status: newStatus,
+                    anomalyScore: anomalyScore,
+                    health: health
+                  };
+                });
+
+                return newSensors;
+              });
+
+              setMetrics(prev => {
+                const hours = time;
+                const totalFlow = sensors.reduce((sum, s) => sum + s.flow, 0);
+                let waterLoss = scenario === 'leak' && hours > 30 ? 14 + (hours - 30) * 0.2 : 14 + Math.random() * 1;
+                let waterSaved = 0;
+                let maintenanceCostAvoided = 0;
+                let hoursBeforeFailure = null;
+                let interventionType = null;
+                
+                const targetSensor = sensors.find(s => s.id === 2);
+                
+                if (targetSensor && scenario === 'leak' && hours < 48) {
+                  hoursBeforeFailure = Math.max(0, 48 - hours);
+                }
+                
+                if (detectedLeak) {
+                  if (detectedLeak.type === 'preventive') {
+                    const hoursSaved = detectedLeak.timeBeforeFailure;
+                    waterSaved = hoursSaved * 850;
+                    maintenanceCostAvoided = 8500;
+                    interventionType = 'Préventive (avant panne)';
+                  } else {
+                    waterSaved = 0;
+                    maintenanceCostAvoided = 0;
+                    interventionType = 'Réactive (après rupture)';
+                    waterLoss = Math.min(45, 14 + (hours - 48) * 2);
+                  }
+                }
+
+                return {
+                  totalFlow: Math.round(totalFlow),
+                  waterLoss: Math.round(waterLoss * 10) / 10,
+                  energyCost: Math.round(totalFlow * 6.2),
+                  leaksDetected: detectedLeak ? 1 : 0,
+                  avgResponseTime: detectedLeak ? (hours - detectedLeak.time) : 0,
+                  waterSaved: Math.round(waterSaved),
+                  duranceFlow: 1850 + Math.sin(hours / 5) * 100,
+                  hoursBeforeFailure: hoursBeforeFailure,
+                  maintenanceCostAvoided: maintenanceCostAvoided,
+                  interventionType: interventionType
+                };
+              });
+
+            }, 1000);
+
+            return () => clearInterval(interval);
+          }, [isRunning, time, scenario, aiEnabled, detectedLeak, sensors, predictions]);
+
+          const resetDemo = () => {
+            setTime(0);
+            setDetectedLeak(null);
+            setAlerts([]);
+            setPredictions([]);
+            setSensors([
+              { id: 1, name: 'Centre-Ville', zone: 'Secteur Citadelle', x: 45, y: 30, flow: 68, pressure: 3.4, status: 'ok', health: 100, anomalyScore: 0 },
+              { id: 2, name: 'La Baume', zone: 'Rive Durance', x: 60, y: 45, flow: 52, pressure: 3.2, status: 'ok', health: 100, anomalyScore: 0 },
+              { id: 3, name: 'Quartiers Nord', zone: 'Les Chaumianes', x: 35, y: 15, flow: 45, pressure: 3.5, status: 'ok', health: 100, anomalyScore: 0 },
+              { id: 4, name: 'Les Plantiers', zone: 'Route de Marseille', x: 75, y: 35, flow: 58, pressure: 3.3, status: 'ok', health: 100, anomalyScore: 0 },
+              { id: 5, name: 'Bourg Reynaud', zone: 'Centre ancien', x: 50, y: 55, flow: 42, pressure: 3.1, status: 'ok', health: 100, anomalyScore: 0 },
+              { id: 6, name: 'Le Thor', zone: 'Quartier Nord', x: 25, y: 25, flow: 38, pressure: 3.4, status: 'ok', health: 100, anomalyScore: 0 },
+              { id: 7, name: 'La Coste', zone: 'Quartier médiéval', x: 40, y: 70, flow: 35, pressure: 3.0, status: 'ok', health: 100, anomalyScore: 0 },
+            ]);
+          };
+
+          const startScenario = (scenarioType) => {
+            resetDemo();
+            setScenario(scenarioType);
+            setIsRunning(true);
+          };
+
+          const targetSensor = sensors.find(s => s.id === 2) || sensors[0];
+          const hours = getTimeInHours();
+
+          return (
+            <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-100 p-4">
+              <div className="max-w-7xl mx-auto">
+                {/* En-tête */}
+                <div className="bg-white rounded-xl shadow-lg p-4 mb-4 border-t-4 border-blue-600">
+                  <div className="flex items-center justify-between flex-wrap gap-4">
+                    <div>
+                      <h1 className="text-2xl md:text-3xl font-bold text-blue-900 flex items-center gap-3">
+                        <Brain />
+                        IA Prédictive - Gestion de l'Eau Sisteron
+                      </h1>
+                      <p className="text-gray-600 text-sm mt-1 flex items-center gap-2">
+                        <Clock />
+                        Anticipation : Détection 24-48h AVANT la panne
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="text-center bg-blue-50 px-4 py-2 rounded-lg">
+                        <div className="text-xs text-gray-500">Temps écoulé</div>
+                        <div className="text-2xl font-bold text-blue-600">{formatTime(hours)}</div>
+                      </div>
+                      {metrics.hoursBeforeFailure !== null && metrics.hoursBeforeFailure > 0 && (
+                        <div className="text-center bg-orange-100 px-4 py-2 rounded-lg border-2 border-orange-400">
+                          <div className="text-xs text-orange-700 font-semibold">⏰ Panne prévue dans</div>
+                          <div className="text-2xl font-bold text-orange-600">{Math.round(metrics.hoursBeforeFailure)}h</div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                  {/* Colonne gauche */}
+                  <div className="lg:col-span-1 space-y-4">
+                    {/* Contrôles */}
+                    <div className="bg-white rounded-xl shadow-lg p-4">
+                      <h2 className="text-lg font-bold text-gray-800 mb-3">Contrôles</h2>
+                      <div className="space-y-3">
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => setIsRunning(!isRunning)}
+                            className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-lg font-semibold transition-colors text-sm ${
+                              isRunning 
+                                ? 'bg-orange-500 hover:bg-orange-600 text-white' 
+                                : 'bg-green-500 hover:bg-green-600 text-white'
+                            }`}
+                          >
+                            {isRunning ? <Pause /> : <Play />}
+                            {isRunning ? 'Pause' : 'Démarrer'}
+                          </button>
+                          <button
+                            onClick={resetDemo}
+                            className="px-3 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors"
+                          >
+                            <RotateCcw />
+                          </button>
+                        </div>
+
+                        <div className="pt-3 border-t">
+                          <label className="flex items-center gap-2 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={aiEnabled}
+                              onChange={(e) => setAiEnabled(e.target.checked)}
+                              className="w-4 h-4 text-purple-600 rounded"
+                            />
+                            <span className="font-semibold text-sm text-gray-700">IA Prédictive</span>
+                          </label>
+                          <p className="text-xs text-gray-500 mt-1">
+                            {aiEnabled 
+                              ? '🤖 Détection 24-48h avant panne' 
+                              : '⚠️ Détection à la rupture (H+0)'}
+                          </p>
+                        </div>
+
+                        <button
+                          onClick={() => startScenario('leak')}
+                          className="w-full bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white py-3 rounded-lg font-semibold transition-all text-sm"
+                        >
+                          🚀 Démarrer scénario (48h)
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Timeline prédictive */}
+                    <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl shadow-lg p-4 border-2 border-purple-300">
+                      <h2 className="text-lg font-bold text-purple-900 mb-3 flex items-center gap-2">
+                        <Timer />
+                        Timeline Prédictive
+                      </h2>
+                      
+                      <div className="space-y-3">
+                        <div className="relative">
+                          <div className="h-2 bg-gradient-to-r from-green-400 via-yellow-400 via-orange-400 to-red-600 rounded-full"></div>
+                          <div 
+                            className="absolute top-0 w-1 h-4 bg-blue-900 transition-all duration-1000"
+                            style={{ left: `${Math.min(100, (hours / 48) * 100)}%`, marginLeft: '-2px', marginTop: '-4px' }}
+                          >
+                            <div className="absolute top-5 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-xs font-bold text-blue-900">
+                              {hours}h
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="space-y-2 text-xs">
+                          <div className={`p-2 rounded ${hours < 20 ? 'bg-green-100 border-2 border-green-500' : 'bg-green-50'}`}>
+                            <div className="font-bold text-green-800">0-20h : Normal</div>
+                            <div className="text-green-700">Fonctionnement standard</div>
+                          </div>
+                          <div className={`p-2 rounded ${hours >= 20 && hours < 36 ? 'bg-blue-100 border-2 border-blue-500' : 'bg-blue-50'}`}>
+                            <div className="font-bold text-blue-800">20-36h : IA surveille</div>
+                            <div className="text-blue-700">Micro-variations détectées</div>
+                          </div>
+                          <div className={`p-2 rounded ${hours >= 36 && hours < 44 ? 'bg-yellow-100 border-2 border-yellow-500' : 'bg-yellow-50'}`}>
+                            <div className="font-bold text-yellow-800">36-44h : IA alerte</div>
+                            <div className="text-yellow-700">Dégradation confirmée</div>
+                          </div>
+                          <div className={`p-2 rounded ${hours >= 44 && hours < 48 ? 'bg-orange-100 border-2 border-orange-500' : 'bg-orange-50'}`}>
+                            <div className="font-bold text-orange-800">44-48h : Intervention IA</div>
+                            <div className="text-orange-700">Maintenance préventive</div>
+                          </div>
+                          <div className={`p-2 rounded ${hours >= 48 ? 'bg-red-100 border-2 border-red-500' : 'bg-red-50'}`}>
+                            <div className="font-bold text-red-800">48h : PANNE</div>
+                            <div className="text-red-700">Détection classique (trop tard)</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Journal des alertes */}
+                    <div className="bg-white rounded-xl shadow-lg p-4 max-h-72 overflow-y-auto">
+                      <h2 className="text-lg font-bold text-gray-800 mb-3">Journal d'événements</h2>
+                      <div className="space-y-2">
+                        {alerts.length === 0 ? (
+                          <p className="text-xs text-gray-500 italic">En attente...</p>
+                        ) : (
+                          alerts.slice(-8).reverse().map((alert, idx) => (
+                            <div 
+                              key={idx} 
+                              className={`p-2 rounded-lg text-xs border-l-4 ${
+                                alert.severity === 'info' ? 'bg-blue-50 border-blue-500' :
+                                alert.severity === 'warning' ? 'bg-yellow-50 border-yellow-500' :
+                                alert.severity === 'critical' ? 'bg-orange-50 border-orange-500' :
+                                'bg-red-50 border-red-500'
+                              }`}
+                            >
+                              <div className="font-semibold text-gray-500">t={alert.time}h</div>
+                              <div className="text-gray-700 font-medium">{alert.message}</div>
+                            </div>
+                          ))
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Colonnes centrale et droite */}
+                  <div className="lg:col-span-2 space-y-4">
+                    {/* Données temps réel en CHIFFRES */}
+                    <div className="bg-white rounded-xl shadow-lg p-4">
+                      <h2 className="text-lg font-bold text-gray-800 mb-3">Données en temps réel - {targetSensor.name}</h2>
+                      <div className="grid grid-cols-3 gap-4">
+                        <div className="bg-blue-50 p-4 rounded-lg text-center">
+                          <div className="text-sm text-gray-600 mb-1">Débit</div>
+                          <div className="text-3xl font-bold text-blue-600">{Math.round(targetSensor.flow)}</div>
+                          <div className="text-xs text-gray-500">L/min</div>
+                          <div className="text-xs mt-1 text-gray-600">Normal : 52 L/min</div>
+                        </div>
+                        <div className="bg-green-50 p-4 rounded-lg text-center">
+                          <div className="text-sm text-gray-600 mb-1">Pression</div>
+                          <div className="text-3xl font-bold text-green-600">{targetSensor.pressure.toFixed(2)}</div>
+                          <div className="text-xs text-gray-500">bar</div>
+                          <div className="text-xs mt-1 text-gray-600">Normal : 3.20 bar</div>
+                        </div>
+                        <div className="bg-red-50 p-4 rounded-lg text-center">
+                          <div className="text-sm text-gray-600 mb-1">Score Anomalie</div>
+                          <div className="text-3xl font-bold text-red-600">{Math.round(targetSensor.anomalyScore)}</div>
+                          <div className="text-xs text-gray-500">/100</div>
+                          <div className="text-xs mt-1 text-gray-600">Seuil alerte : 50</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Analyse IA */}
+                    {aiEnabled && (
+                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl shadow-lg p-4 border-2 border-purple-300">
+                        <h2 className="text-lg font-bold text-purple-900 mb-3 flex items-center gap-2">
+                          <Brain />
+                          Analyse IA Prédictive
+                        </h2>
+                        
+                        <div className="mb-3">
+                          <div className="flex justify-between text-sm mb-1">
+                            <span className="font-semibold">Santé du réseau</span>
+                            <span className="font-bold">{Math.round(targetSensor.health)}%</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-4">
+                            <div
+                              className={`h-4 rounded-full transition-all ${
+                                targetSensor.health > 70 ? 'bg-green-500' :
+                                targetSensor.health > 40 ? 'bg-yellow-500' :
+                                targetSensor.health > 20 ? 'bg-orange-500' : 'bg-red-500'
+                              }`}
+                              style={{ width: `${targetSensor.health}%` }}
+                            />
+                          </div>
+                        </div>
+
+                        <div className={`p-3 rounded-lg text-sm ${
+                          targetSensor.anomalyScore < 20 ? 'bg-green-100 text-green-800' :
+                          targetSensor.anomalyScore < 45 ? 'bg-blue-100 text-blue-800' :
+                          targetSensor.anomalyScore < 75 ? 'bg-orange-100 text-orange-800' :
+                          'bg-red-100 text-red-800'
+                        }`}>
+                          <div className="font-bold text-base mb-1">
+                            {targetSensor.anomalyScore < 20 ? '✅ Surveillance normale' :
+                             targetSensor.anomalyScore < 45 ? '🔍 Surveillance renforcée' :
+                             targetSensor.anomalyScore < 75 ? '🚨 Intervention recommandée' :
+                             '🔴 Maintenance urgente'}
+                          </div>
+                          <div>
+                            {targetSensor.anomalyScore < 20 ? 'Tous les paramètres dans la normale' :
+                             targetSensor.anomalyScore < 45 ? 'Signaux faibles de dégradation détectés' :
+                             targetSensor.anomalyScore < 75 ? 'Panne probable dans les prochaines heures' :
+                             'Risque imminent - Intervention préventive nécessaire'}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Comparaison */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className={`rounded-xl shadow-lg p-4 ${aiEnabled ? 'bg-gradient-to-br from-green-50 to-emerald-100 border-2 border-green-500' : 'bg-gray-100 opacity-60'}`}>
+                        <h3 className="text-base font-bold mb-3 flex items-center gap-2">
+                          <Shield />
+                          Avec IA Prédictive
+                        </h3>
+                        <div className="space-y-2 text-sm">
+                          <div className="bg-white/60 p-2 rounded">
+                            <div className="text-gray-700 font-medium">Première détection</div>
+                            <div className="text-xl font-bold text-green-700">H-18 (30h)</div>
+                          </div>
+                          <div className="bg-white/60 p-2 rounded">
+                            <div className="text-gray-700 font-medium">Intervention préventive</div>
+                            <div className="text-xl font-bold text-green-700">H-3 (45h)</div>
+                          </div>
+                          <div className="bg-white/60 p-2 rounded">
+                            <div className="text-gray-700 font-medium">Eau gaspillée</div>
+                            <div className="text-xl font-bold text-green-700">~2 500 L</div>
+                          </div>
+                          <div className="bg-white/60 p-2 rounded">
+                            <div className="text-gray-700 font-medium">Coût réparation</div>
+                            <div className="text-xl font-bold text-green-700">~1 200 €</div>
+                          </div>
+                          <div className="bg-green-200 p-2 rounded mt-2">
+                            <div className="text-xs font-bold text-green-900">Type : MAINTENANCE PRÉVENTIVE</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className={`rounded-xl shadow-lg p-4 ${!aiEnabled ? 'bg-gradient-to-br from-red-50 to-red-100 border-2 border-red-500' : 'bg-gray-100 opacity-60'}`}>
+                        <h3 className="text-base font-bold mb-3 flex items-center gap-2">
+                          <AlertTriangle />
+                          Sans IA (Méthode classique)
+                        </h3>
+                        <div className="space-y-2 text-sm">
+                          <div className="bg-white/60 p-2 rounded">
+                            <div className="text-gray-700 font-medium">Première détection</div>
+                            <div className="text-xl font-bold text-red-700">H+0 (48h)</div>
+                          </div>
+                          <div className="bg-white/60 p-2 rounded">
+                            <div className="text-gray-700 font-medium">Intervention d'urgence</div>
+                            <div className="text-xl font-bold text-red-700">H+2 (50h)</div>
+                          </div>
+                          <div className="bg-white/60 p-2 rounded">
+                            <div className="text-gray-700 font-medium">Eau gaspillée</div>
+                            <div className="text-xl font-bold text-red-700">~12 000 L</div>
+                          </div>
+                          <div className="bg-white/60 p-2 rounded">
+                            <div className="text-gray-700 font-medium">Coût réparation</div>
+                            <div className="text-xl font-bold text-red-700">~9 700 €</div>
+                          </div>
+                          <div className="bg-red-200 p-2 rounded mt-2">
+                            <div className="text-xs font-bold text-red-900">Type : RÉPARATION D'URGENCE</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Explication */}
+                    <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-xl p-4 text-white">
+                      <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
+                        <Activity />
+                        Comment l'IA détecte 48h AVANT la panne ?
+                      </h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                        <div className="bg-white/10 p-3 rounded-lg">
+                          <div className="font-bold mb-1 flex items-center gap-2">
+                            <span className="text-xl">1️⃣</span>
+                            Apprentissage historique
+                          </div>
+                          <div className="text-xs opacity-90">
+                            L'IA est entraînée sur des milliers de pannes passées pour reconnaître les "signatures" précoces
+                          </div>
+                        </div>
+                        <div className="bg-white/10 p-3 rounded-lg">
+                          <div className="font-bold mb-1 flex items-center gap-2">
+                            <span className="text-xl">2️⃣</span>
+                            Micro-variations invisibles
+                          </div>
+                          <div className="text-xs opacity-90">
+                            Détection de variations de 0,01 bar ou 0,5 L/min - imperceptibles pour un humain
+                          </div>
+                        </div>
+                        <div className="bg-white/10 p-3 rounded-lg">
+                          <div className="font-bold mb-1 flex items-center gap-2">
+                            <span className="text-xl">3️⃣</span>
+                            Corrélation multi-capteurs
+                          </div>
+                          <div className="text-xs opacity-90">
+                            Analyse croisée de 7 capteurs + météo + consommation historique = détection précoce
+                          </div>
+                        </div>
+                        <div className="bg-white/10 p-3 rounded-lg">
+                          <div className="font-bold mb-1 flex items-center gap-2">
+                            <span className="text-xl">4️⃣</span>
+                            Score prédictif évolutif
+                          </div>
+                          <div className="text-xs opacity-90">
+                            Calcul continu de probabilité de panne : 0-20% = OK, 20-50% = surveillance, 50%+ = action
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* ROI */}
+                    {detectedLeak && (
+                      <div className="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl shadow-xl p-4 text-white">
+                        <h3 className="text-lg font-bold mb-3">💰 Économies réalisées avec l'IA</h3>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+                          <div className="bg-white/20 p-3 rounded-lg">
+                            <div className="text-2xl font-bold">{metrics.waterSaved}L</div>
+                            <div className="text-xs opacity-90">Eau économisée</div>
+                          </div>
+                          <div className="bg-white/20 p-3 rounded-lg">
+                            <div className="text-2xl font-bold">{metrics.maintenanceCostAvoided}€</div>
+                            <div className="text-xs opacity-90">Coûts évités</div>
+                          </div>
+                          <div className="bg-white/20 p-3 rounded-lg">
+                            <div className="text-2xl font-bold">48h</div>
+                            <div className="text-xs opacity-90">Anticipation</div>
+                          </div>
+                          <div className="bg-white/20 p-3 rounded-lg">
+                            <div className="text-2xl font-bold">x8</div>
+                            <div className="text-xs opacity-90">ROI sur 1 an</div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        };
+
+        ReactDOM.render(<DemonstrateurEauSisteronPredictif />, document.getElementById('root'));
+    </script>
+</body>
+</html>
