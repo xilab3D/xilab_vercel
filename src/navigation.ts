@@ -96,7 +96,7 @@ export const footerData = {
     {
       title: 'Produits',
       links: [
-        { text: 'A venir ...', href: '/soon' },
+        { text: 'A venir ...', href: '/landing/demonstrateur-sisteron-standalone.html' },
       ],
     },
     {
